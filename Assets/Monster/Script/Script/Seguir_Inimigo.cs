@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Seguir_Inimigo : MonoBehaviour
 {
+    Rigidbody rb;
     private Animator animInimigo;
     private UnityEngine.AI.NavMeshAgent navMesh;
     private GameObject player;
@@ -12,6 +13,9 @@ public class Seguir_Inimigo : MonoBehaviour
 
     void Start()
     {
+        rb = GetComponent<Rigidbody>(); // resumir GetCompon...
+        rb.freezeRotation = true; // travar rotacao de personagem ao inserir for�a
+
         animInimigo = GetComponent<Animator>();
         navMesh = GetComponent<UnityEngine.AI.NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player");

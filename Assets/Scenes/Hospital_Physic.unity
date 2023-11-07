@@ -27214,12 +27214,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 954279231}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 125a8455b41b7934b82eff428c508911, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.82
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 125a8455b41b7934b82eff428c508911, type: 3}
       propertyPath: m_LocalPosition.x
       value: -50.649258
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 125a8455b41b7934b82eff428c508911, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.3012028
+      value: 2.993
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 125a8455b41b7934b82eff428c508911, type: 3}
       propertyPath: m_LocalPosition.z
@@ -41515,13 +41519,13 @@ CapsuleCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 1
+  m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.4577608
-  m_Height: 3.131155
+  m_Height: 2.8499017
   m_Direction: 1
-  m_Center: {x: 0.032855302, y: 1.1088481, z: 6.1342564e-10}
+  m_Center: {x: 0.032855302, y: 1.3434652, z: 6.1342564e-10}
 --- !u!195 &1432130395
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -41566,8 +41570,8 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -41580,7 +41584,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1432130390}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: 125a8455b41b7934b82eff428c508911, type: 3}
   m_Controller: {fileID: 9100000, guid: b37e688f04b2f0344bee706c6a7871f7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
