@@ -98,4 +98,9 @@ public class Controller_Player : MonoBehaviour
     
         
     }
+    void OnTriggerEnter(Collider collider){
+        if( collider.gameObject.tag == "bloco" ){
+            GameObject.Find("Inventary").GetComponent<Inventario>().pegarItem("espada");
+        }
+    }
 }
