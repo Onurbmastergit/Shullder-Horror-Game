@@ -19,7 +19,7 @@ public class Cellphone : MonoBehaviour
     public RawImage battery_50;
     public RawImage battery_10;
     public RawImage battery_0;
-    public float battery = 100;
+    public static float battery = 100;
     public float time_limit = 1;
     float time_decurred = 0;
     bool light_on = true;
@@ -27,7 +27,7 @@ public class Cellphone : MonoBehaviour
     bool recharge = false;
 
     void Update()
-    {
+{
       
        time_decurred += Time.deltaTime;
 
@@ -38,20 +38,22 @@ public class Cellphone : MonoBehaviour
         } 
 
 
+            battery_100.GetComponent<RawImage>().enabled = false;   
+            battery_50.GetComponent<RawImage>().enabled = false;   
+            battery_10.GetComponent<RawImage>().enabled = false;
+            battery_0.GetComponent<RawImage>().enabled = false;
 
         if(battery > 50){
             battery_100.GetComponent<RawImage>().enabled = true;
         }
         if(battery <= 50 && battery > 10){
-            battery_100.GetComponent<RawImage>().enabled = false;   
             battery_50.GetComponent<RawImage>().enabled = true;
         }
         if(battery <= 10 && battery > 0){
-            battery_50.GetComponent<RawImage>().enabled = false;   
-            battery_10.GetComponent<RawImage>().enabled = true;
+            battery_10.GetComponent<RawImage>().enabled = true;   
         }
         if(battery <= 0 ){
-            battery_10.GetComponent<RawImage>().enabled = false;    
+            //battery_10.GetComponent<RawImage>().enabled = false;    
             battery_0.GetComponent<RawImage>().enabled = true;
             battery_minum = true;
         }
@@ -71,4 +73,5 @@ public class Cellphone : MonoBehaviour
         }
        flashlight.GetComponent<Light>().enabled = light_on;
 }
+   
 }
