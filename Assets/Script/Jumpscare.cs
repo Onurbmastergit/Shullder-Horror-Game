@@ -18,6 +18,7 @@ void Update()
         collision1.enabled = false;
         jumpscare.GetComponent<RawImage>().enabled = true;
         scream.Play();
+        Controller_Player.tired_out = true;
         StartCoroutine(repeat());
     }
   }

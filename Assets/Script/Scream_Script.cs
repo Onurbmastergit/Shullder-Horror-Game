@@ -17,6 +17,7 @@ void Update()
         collision1.enabled = false;
         monster.SetActive (true);
         scream.Play();
+        Controller_Player.tired_out = true;
         StartCoroutine(repeat());
     }
   }

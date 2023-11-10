@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 public class Controller_Player : MonoBehaviour
 {
     public AudioSource breathing;
-    bool tired_out = false;
+   public static bool tired_out = false;
      public float walkingSpeed = 7.5f;
     public float runningSpeed = 11.5f;
     public float jumpSpeed = 8.0f;
