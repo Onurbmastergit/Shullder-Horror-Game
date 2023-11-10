@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Battery_3D : MonoBehaviour
-{
+{ 
+    public AudioSource pickup_battery;
     public float speed = 10f;
     void Update()
     {
@@ -13,7 +14,8 @@ public class Battery_3D : MonoBehaviour
       void OnTriggerEnter(Collider other)
   {
     if(other.CompareTag("Player")){
-        Cellphone.battery += 10;
+        pickup_battery.Play();
+        Cellphone.battery += 30;
         Destroy(gameObject);
     }
   }

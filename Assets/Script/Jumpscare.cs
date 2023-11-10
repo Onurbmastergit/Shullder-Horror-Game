@@ -18,6 +18,12 @@ void Update()
         collision1.enabled = false;
         jumpscare.GetComponent<RawImage>().enabled = true;
         scream.Play();
+        StartCoroutine(repeat());
     }
+  }
+  IEnumerator repeat()
+  {
+    yield return new WaitForSeconds (2.0f);
+    jumpscare.GetComponent<RawImage>().enabled = false;
   }
 }

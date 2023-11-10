@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Controller_Player : MonoBehaviour
 {
+    public AudioSource breathing;
+    bool tired_out = false;
      public float walkingSpeed = 7.5f;
     public float runningSpeed = 11.5f;
     public float jumpSpeed = 8.0f;
@@ -27,8 +30,8 @@ public class Controller_Player : MonoBehaviour
         characterController = GetComponent<CharacterController>();
 
         // Lock cursor
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+        UnityEngine.Cursor.visible = false;
     }
 
     void Update()
@@ -57,6 +60,7 @@ public class Controller_Player : MonoBehaviour
     {
         if (!runSound.isPlaying)
         {
+            tired_out = true;
             runSound.Play();
             walkSound.Pause(); // Pausa o som de andar
         }
@@ -95,7 +99,16 @@ public class Controller_Player : MonoBehaviour
             playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
             transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
         }
+        if(tired_out == true){
+            StartCoroutine(repeat());
+        }
     
         
     }
+      IEnumerator repeat()
+  {
+    yield return new WaitForSeconds (3.0f);
+        breathing.Play();
+        tired_out = false;
+  }
 }

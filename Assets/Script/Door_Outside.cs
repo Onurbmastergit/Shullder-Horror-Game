@@ -1,32 +1,58 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Door_Outside : MonoBehaviour
-{
-       public Animator _animator;
-    private bool _colider;
+{   
+    public static bool active_inside = true;
+    public AudioSource lock_closed;
+    public AudioSource opened;
+    public AudioSource closed;
+    public static bool key_found = false;    
+    public bool locked = false;
+    public RawImage icon;
+    public Animator _animator;
     private bool _doorOpen = false;
     void Update(){
+        if(Door_Inside.active_outside == false){
+            gameObject.GetComponent<Collider>().enabled = false;
+        } if(Door_Inside.active_outside == true){
+            gameObject.GetComponent<Collider>().enabled = true;
+        }
         _doorOpen = false;
+        if(key_found == true){
+            locked = false;
+        }
     }
     void OnTriggerEnter(Collider _col){
          if(_col.gameObject.CompareTag("Player")){
+            active_inside = false;
+         }
+        if(_col.gameObject.CompareTag("Player") && locked == true){
+            lock_closed.Play();
+        }
+         if(_col.gameObject.CompareTag("Player") && locked == false){
             _animator.SetTrigger("Outside");
-            Debug.Log("aiii");
-            _colider = true;
             _doorOpen = true;
+            opened.Play();
          }
     }
       void OnTriggerExit(Collider _col){
+         lock_closed.Stop();
+
         if(_col.gameObject.CompareTag("Player")){
-            if(_doorOpen == false){
-                _animator.SetTrigger("Close");
-                Debug.Log("abriu3");
+            if(_doorOpen == false && locked == false){
+              StartCoroutine(repeat());
             }
-            _colider = false;
-            Debug.Log("abriu4");
         }
     }
+     IEnumerator repeat()
+  {
+    yield return new WaitForSeconds (3.0f);
+        active_inside = true;
+      _animator.SetTrigger("Close");
+      closed.Play();
+  }
 
 }

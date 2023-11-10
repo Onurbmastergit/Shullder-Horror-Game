@@ -6,6 +6,7 @@ public class Monster_Apear : MonoBehaviour
 {
   public Collider collision1;
   public AudioSource scream;
+  public GameObject monster;
 void Update()
 {
 
@@ -14,7 +15,14 @@ void Update()
   {
     if(other.CompareTag("Player")){
         collision1.enabled = false;
+        monster.SetActive (true);
         scream.Play();
+        StartCoroutine(repeat());
     }
+  }
+    IEnumerator repeat()
+  {
+    yield return new WaitForSeconds (3.0f);
+    monster.SetActive(false);
   }
 }
