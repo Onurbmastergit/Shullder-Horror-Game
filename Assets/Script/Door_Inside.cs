@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Door_Inside : MonoBehaviour
 {   
+    bool canOpenDoor = false;
     public static bool active_outside = true;
     public AudioSource lock_closed;
     public AudioSource opened;
@@ -26,19 +27,21 @@ public class Door_Inside : MonoBehaviour
         }
     }
     void OnTriggerEnter(Collider _col){
-        if(_col.gameObject.CompareTag("Player")){
-            active_outside = false;
-         }
-        if(_col.gameObject.CompareTag("Player") && locked == true){
-            lock_closed.Play();
+        canOpenDoor = true;
+         if(_col.gameObject.CompareTag("Player")){
+             active_outside = false;
         }
-         if(_col.gameObject.CompareTag("Player") && locked == false){
-            _animator.SetTrigger("Inside");
-            _doorOpen = true;
-            opened.Play();
+        if(_col.gameObject.CompareTag("Player") && locked == true){
+             lock_closed.Play();
          }
+          if(_col.gameObject.CompareTag("Player") && locked == false){
+             _animator.SetTrigger("Inside");
+             _doorOpen = true;
+             opened.Play();
+          }
     }
       void OnTriggerExit(Collider _col){
+        canOpenDoor = false;
             lock_closed.Stop();
 
         if(_col.gameObject.CompareTag("Player")){

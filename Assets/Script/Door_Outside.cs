@@ -24,12 +24,13 @@ public class Door_Outside : MonoBehaviour
         if(key_found == true){
             locked = false;
         }
+
     }
     void OnTriggerEnter(Collider _col){
          if(_col.gameObject.CompareTag("Player")){
             active_inside = false;
          }
-        if(_col.gameObject.CompareTag("Player") && locked == true){
+        if(_col.gameObject.CompareTag("Player") && locked == true ){
             lock_closed.Play();
         }
          if(_col.gameObject.CompareTag("Player") && locked == false){

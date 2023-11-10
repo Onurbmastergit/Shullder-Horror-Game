@@ -7,7 +7,7 @@ public class Seguir_Inimigo : MonoBehaviour
     Rigidbody rb;
     private UnityEngine.AI.NavMeshAgent navMesh;
     private GameObject player;
-    public float velocidadeInimigo;
+    public static float velocidadeInimigo = 2;
 
 
     void Start()

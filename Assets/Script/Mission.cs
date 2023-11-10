@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Mission : MonoBehaviour
@@ -10,24 +11,25 @@ public class Mission : MonoBehaviour
 
     bool mission_take_documents = true;
 
-    int documents_take = 0;
+   public static int documents_take = 0;
     int documents_objt = 5;
-    void Start()
-    {
-        checkMission();
-    }
 
-    public void checkMission(){
-        if( mission_take_documents == true){
+    bool hud_mission = true;
+
+    void Update(){ 
+
+        if(Input.GetKeyDown(KeyCode.T)){
+           hud_mission  =!hud_mission;
+           Debug.Log("uuuuuuuuuuu");
+        }
+         if( mission_take_documents == true){
             textoTela.text = "<b>Descubra a Historia do Hospício<b>\n"+documents_take+"/"+documents_objt;
             if(documents_take >= documents_objt){
                 mission_take_documents = false;
             }
         }
+    textoTela.GetComponent<TextMeshProUGUI>().enabled = hud_mission;
     }
 
-    public void takeDocument(){
-        documents_take += 1;
-        checkMission();
-    }
+  
 }
