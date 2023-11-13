@@ -11,7 +11,6 @@ public class Death_Player : MonoBehaviour
     {
         if(collider.gameObject.CompareTag("Player")){
             SceneManager.LoadScene(scenename);
-            Debug.Log("COLIDIU");
         }
     }
 }

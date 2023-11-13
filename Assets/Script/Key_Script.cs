@@ -5,11 +5,6 @@ using UnityEngine;
 public class Key_Script : MonoBehaviour
 {   
     public AudioSource key_pickup;
-    public float speed = 10f;
-    void Update()
-    {
-        transform.Rotate(0,speed * Time.deltaTime,0);
-    }
      void OnTriggerEnter(Collider other)
   {
     if(other.CompareTag("Player")){

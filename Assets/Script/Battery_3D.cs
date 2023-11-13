@@ -13,7 +13,7 @@ public class Battery_3D : MonoBehaviour
     }
       void OnTriggerEnter(Collider other)
   {
-    if(other.CompareTag("Player")){
+    if(other.CompareTag("Player") && Cellphone.battery_max == false){
         pickup_battery.Play();
         Cellphone.battery += 30;
         Destroy(gameObject);

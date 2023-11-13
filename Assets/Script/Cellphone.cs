@@ -25,13 +25,20 @@ public class Cellphone : MonoBehaviour
     bool light_on = true;
     bool battery_minum = false;
     bool recharge = false;
+    public static bool battery_max = false;
 
     void Update()
-{
+{   
+    if(battery >= 100){
+        battery_max = true;
+    }
+    if(battery <= 100){
+        battery_max = false;
+    }
       
        time_decurred += Time.deltaTime;
 
-        if(time_decurred >= time_limit && battery_minum == false)
+        if(time_decurred >= time_limit && battery_minum == false )
         {
             battery --;
             time_decurred = 0;
